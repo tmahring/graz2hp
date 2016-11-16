@@ -1,0 +1,258 @@
+@import "compass/css3";
+
+@import 'https://fonts.googleapis.com/css?family=Cabin+Sketch|Love+Ya+Like+A+Sister|Oswald|Open+Sans';
+//$headline-font: 'Love Ya Like A Sister', cursive;
+$headline-font: 'Cabin Sketch', cursive;
+$text-font: 'Open Sans', sans-serif;
+//$text-font: 'Oswald', sans-serif;
+
+$font-family-base: $text-font;
+$headings-font-family: $headline-font;
+$text-color: black;
+
+$fa-font-path: "../bower_components/font-awesome/fonts/";
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+//Override Bootstrap Breakpoints
+$grid-gutter-width:         30px;
+$screen-xs:                  480px;
+$screen-sm:                  768px;
+$screen-md:                  1200px;
+$screen-lg:                  1600px;
+$container-tablet:             (720px + $grid-gutter-width) !default;
+$container-sm:                 $container-tablet !default;
+$container-desktop:            (1140px + $grid-gutter-width) !default;
+$container-md:                 $container-desktop !default;
+$container-large-desktop:      (1540px + $grid-gutter-width) !default;
+$container-lg:                 $container-large-desktop !default;
+
+
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "font-awesome/scss/font-awesome.scss";
+// endbower
+//@import "../bower_components/slider-revolution/src/css/settings.css";
+
+
+$color-graz2: #1d3c90;
+$color-biber: #9E5B20;
+$color-wiwo: #FFDD15;
+$color-gusp: #8ED927;
+$color-caex: lighten(#2C53C7, 10%);
+$color-raro: lighten(#D11D24, 7.5%);
+$color-gruppe: lighten(#8805A8, 7.5%);
+$color-ppoe: #b51f1f;
+
+$color-biber-light: tint($color-biber, 40%);
+$color-biber-dark: darken($color-biber, 15%);
+$color-wiwo-light: lighten($color-wiwo, 25%);
+$color-wiwo-dark: darken($color-wiwo, 5%);
+$color-gusp-light: lighten($color-gusp, 30%);
+$color-gusp-dark: darken($color-gusp, 20%);
+$color-caex-light: lighten($color-caex, 30%);
+$color-caex-dark: darken($color-caex, 15%);
+//$color-raro-light: lighten(desaturate($color-raro, 20%), 20%);
+$color-raro-light: tint($color-raro, 55%);
+$color-raro-dark: darken($color-raro, 15%);
+$color-gruppe-light: lighten($color-gruppe, 40%);
+$color-gruppe-dark: darken($color-gruppe, 10%);
+
+@mixin color-stufe($color-stufe, $color-stufe-light, $color-stufe-dark) {
+  &.bgcolor-stufe, .bgcolor-stufe {
+    background-color: $color-stufe;
+  }
+  &.color-stufe, .color-stufe {
+    color: $color-stufe;
+  }
+
+  &.bgcolor-stufe-light, .bgcolor-stufe-light {
+    background-color: $color-stufe-light;
+  }
+  &.color-stufe-light, .color-stufe-light {
+    color: $color-stufe-light;
+  }
+
+  &.bgcolor-stufe-dark, .bgcolor-stufe-dark {
+    background-color: $color-stufe-dark;
+  }
+  &.color-stufe-dark, .color-stufe-dark {
+    color: $color-stufe-dark;
+  }
+}
+
+.stufe-biber {
+  @include color-stufe($color-biber, $color-biber-light, $color-biber-dark);
+}
+.stufe-wiwo {
+  @include color-stufe($color-wiwo, $color-wiwo-light, $color-wiwo-dark);
+}
+.stufe-gusp {
+  @include color-stufe($color-gusp, $color-gusp-light, $color-gusp-dark);
+}
+.stufe-caex {
+  @include color-stufe($color-caex, $color-caex-light, $color-caex-dark);
+}
+.stufe-raro {
+  @include color-stufe($color-raro, $color-raro-light, $color-raro-dark);
+}
+.stufe-gruppe {
+  @include color-stufe($color-gruppe, $color-gruppe-light, $color-gruppe-dark);
+}
+
+.bgwhite {
+  background-color: white;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: $headings-font-family;
+}
+
+h1.section-title {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.bgcover {
+  background-size: cover;
+  background-position: center;
+}
+
+.bgcontain {
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+hr.seperator {
+  border: none;
+  background-image: url(../images/seperator.png);
+  background-size: 100% 100%;
+  width: 200px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+hr.seperator-ws {
+  border: none;
+  background-image: url(../images/seperator_ws.png);
+  background-size: 100% 100%;
+  width: 200px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+hr.seperator.small {
+  width: 200px;
+  height: 10px;
+}
+
+.footer-image {
+  display:inline-block;
+  height:70px;
+  width:auto;
+  margin-right:10px;
+}
+
+#footer {
+  background-color: $color-ppoe;
+  padding: 10px;
+  color:white;
+  text-align: center;
+  a {
+    color:white;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .footer-image {
+    height: 40px;
+  }
+  .copyright {
+    clear: both;
+  }
+}
+
+.spacer {
+  display: block;
+  height: 100px;
+}
+@media (max-width: $screen-xs-max) {
+  .spacer {
+    height: 50px;
+  }
+}
+
+a.noshow {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
+.filter-buttons {
+  width:100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-biber {
+  @include button-variant($btn-default-color, $color-biber, black);
+}
+.btn-wiwo {
+  @include button-variant($btn-default-color, $color-wiwo,  black);
+}
+.btn-gusp {
+  @include button-variant($btn-default-color, $color-gusp, black);
+}
+.btn-caex {
+  @include button-variant($btn-default-color, $color-caex, black);
+}
+.btn-raro {
+  @include button-variant($btn-default-color, $color-raro,  black);
+}
+.btn-gruppe {
+  @include button-variant($btn-default-color, $color-gruppe, black);
+}
+/*.btn-biber.active {
+  @include button-variant($btn-default-color, $color-biber, black);
+}
+.btn-wiwo.active {
+  @include button-variant($btn-default-color, $color-wiwo,  black);
+}
+.btn-gusp.active {
+  @include button-variant($btn-default-color, $color-gusp, black);
+}
+.btn-caex.active {
+  @include button-variant($btn-default-color, $color-caex, black);
+}
+.btn-raro.active {
+  @include button-variant($btn-default-color, $color-raro,  black);
+}
+.btn-gruppe.active {
+  @include button-variant($btn-default-color, $color-gruppe, black);
+}*/
+
+
+@import "nav";
+@import "news";
+@import "about";
+@import "slider";
+@import "timeline";

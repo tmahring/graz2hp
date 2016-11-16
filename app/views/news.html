@@ -1,0 +1,59 @@
+<div class="spacer"></div>
+<h1 class="section-title">Aktuelles</h1>
+<hr class="seperator"/>
+
+<div class="filter-buttons">
+  <div class="btn-group">
+    <button type="button" class="btn btn-default" ng-click="setFilter(undefined)">Alle</button>
+    <button type="button" class="btn btn-biber" ng-class="{'active': stufenFilter == 'biber' || !stufenFilter}" ng-click="setFilter('biber')">Biber</button>
+    <button type="button" class="btn btn-wiwo" ng-class="{'active': stufenFilter == 'wiwo' || !stufenFilter}" ng-click="setFilter('wiwo')">WiWö</button>
+    <button type="button" class="btn btn-gusp" ng-class="{'active': stufenFilter == 'gusp' || !stufenFilter}" ng-click="setFilter('gusp')">GuSp</button>
+    <button type="button" class="btn btn-caex" ng-class="{'active': stufenFilter == 'caex' || !stufenFilter}" ng-click="setFilter('caex')">CaEx</button>
+    <button type="button" class="btn btn-raro" ng-class="{'active': stufenFilter == 'raro' || !stufenFilter}" ng-click="setFilter('raro')">RaRo</button>
+    <button type="button" class="btn btn-gruppe" ng-class="{'active': stufenFilter == 'gruppe' || !stufenFilter}" ng-click="setFilter('gruppe')">Gruppe</button>
+  </div>
+</div>
+
+<div class="text-center" ng-if="content">
+  <grid-view data="content" selected="{{newsitem}}" filter="newsFilter" class="news">
+    <grid-thumb ng-click="activate(entry)" class="news-preview" aspect=".8">
+      <div class="news-img" style="background-image:url({{entry.thumb}})">
+        <div class="title">
+          <h1>{{entry.title}}</h1>
+          <h2>{{entry.dateDisplay}}</h2>
+        </div>
+      </div>
+    </grid-thumb>
+    <grid-full class="news-full">
+      <div class="news-full-wrapper stufe-{{entry.stufe[0]}} bgcolor-stufe-light">
+        <div class="fa fa-times button-close" ng-click="close()"></div>
+        <div class="fa fa-chevron-right button-next" ng-if="entry.next" ng-click="activate(entry.next)"></div>
+        <div class="fa fa-chevron-left button-prev" ng-if="entry.prev" ng-click="activate(entry.prev)"></div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <div class="bgcover" aspect="0.75" style="background-image:url({{entry.img}})"></div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <div class="news-full-right bgwhite" aspect="0.75" minsize="1200">
+                <h1 class="news-title">{{entry.title}}</h1>
+                <div ng-bind-html="entry.body"></div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div ng-if="entry.galleryThumbs.length > 0">
+          <div class="image-bar-wrapper bgcolor-stufe-dark">
+            <image-bar>
+              <image-bar-image ng-repeat="img in entry.galleryThumbs" img-src="{{img}}"></image-bar-image>
+            </image-bar>
+          </div>
+        </div>
+
+      </div>
+    </grid-full>
+  </grid-view>
+</div>

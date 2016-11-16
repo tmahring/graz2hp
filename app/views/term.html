@@ -1,0 +1,17 @@
+<div class="spacer"></div>
+<h1 class="section-title">Termine</h1>
+<hr class="seperator"/>
+
+<div class="container termine">
+  <div class="col-md-12">
+    <div class="cd-timeline-big" id="cd-timeline">
+      <div class="cd-timeline-block event-{{event.stufe[0]}}" ng-repeat="event in events">
+        <div class="cd-timeline-content">
+          <span class="cd-date"><i class="fa fa-calendar"></i><span class="date1">{{event.date1}}</span><br/><span class="date2">{{event.date2}}</span></span>
+          <h2>{{event.title}}</h2>
+          <div ng-bind-html="event.body"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

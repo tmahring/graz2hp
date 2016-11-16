@@ -1,0 +1,260 @@
+$cloud-width: 100px;
+.thought-cloud {
+  position: fixed;
+  top: 100px;
+  right: 50px;
+  width: $cloud-width;
+  height: $cloud-width / 546px * 595px;
+  z-index: 1000;
+  background-image: url(../images/cloud.png);
+  background-size: 100% 100%;
+  padding-top: $cloud-width / 546px * 250px;
+  text-align: center;
+  .link {
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
+}
+
+.stufen-tile {
+  @include make-xs-column(12);
+  @include make-sm-column(6);
+  @include make-md-column(4);
+
+  display: inline-block;
+  float: none !important;
+  position: relative;
+  line-height: 0px;
+  vertical-align:top;
+
+  padding: 5px;
+  overflow: hidden;
+  .inner {
+    padding: 20px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  h1 {
+    display:block;
+    width: 100%;
+    height: 150px;
+    font-size: 60px;
+    margin-bottom: 10px;
+    .text-left, .text-right, .title-mid {
+      display: block;
+    }
+    .title-mid {
+      text-align: center;
+      font-size: 20px;
+    }
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 20px;
+    margin:0px;
+    .text-right {
+      float:right;
+    }
+  }
+}
+
+.stufen-tile.stufe-biber .inner {
+  h1 {
+    line-height: 160px;
+    vertical-align: bottom;
+  }
+}
+
+.stufen-tile.stufe-gruppe .inner {
+  h1 {
+    padding-top: 15px;
+    font-size: 40px;
+  }
+}
+
+.stufen-beschreibung {
+  padding: 100px 0px;
+  .inner {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 60px;
+  }
+  h2 {
+    margin-top: 40px;
+  }
+  h1, h2 {
+    text-align: center;
+  }
+  h3 {
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    .text-right {
+      display: inline-block;
+      float:right;
+    }
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .stufen-beschreibung {
+    margin-left:-10000px;
+    margin-right: -10000px;
+  }
+}
+
+.leiter-steckbrief {
+  display: inline-block;
+  float: none !important;
+  .inner {
+    padding: 15px;
+  }
+
+  color: white;
+
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-family: $text-font;
+    margin-top: 5px;
+    font-size: 20px;
+    text-align: left;
+    .text-right {
+      display: inline-block;
+      float:right;
+    }
+  }
+}
+
+.stufe-wiwo .leiter-steckbrief .inner {
+  color: black;
+}
+
+#contact {
+  padding: 0;
+  .contact-detail {
+    @include make-md-column(6);
+    @include make-xs-column(12);
+    padding:0;
+    background-image: url(../images/bg_contact.jpg);
+    background-size: cover;
+    background-position: center;
+    a {
+      color: white;
+    }
+  }
+  .contact-map {
+    @include make-md-column(6);
+    @include make-xs-column(12);
+    pointer-events: none;
+    padding:0;
+  }
+
+  h2 {
+    margin-top: 30px;
+  }
+
+  ul {
+    text-align: left;
+    margin-left: 200px;
+    margin-bottom: 30px;
+  }
+}
+
+.centered-v {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 100%;
+  @include translate(0%, -50%);
+}
+
+.contact-detail-text {
+  padding-top: 100px;
+}
+
+.contact-detail {
+  color: white;
+  p {
+    font-size: 120%;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .stufen-tile {
+    .inner {
+      padding: 10px;
+    }
+    h1 {
+      height: 100px;
+      font-size: 40px;
+      margin-bottom: 5px;
+      .title-mid {
+        font-size: 20px;
+      }
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+  }
+
+  .stufen-tile.stufe-biber .inner {
+    h1 {
+      line-height: 100px;
+    }
+  }
+
+  .stufen-tile.stufe-gruppe .inner {
+    h1 {
+      padding-top: 15px;
+      font-size: 30px;
+    }
+  }
+
+  .stufen-beschreibung {
+    padding: 50px 0px;
+    .inner {
+      padding: 10px;
+    }
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    h3 {
+      font-size: 15px;
+    }
+  }
+
+  .leiter-steckbrief {
+    .inner {
+      padding: 5px;
+    }
+    margin-bottom: 10px;
+
+    color: white;
+    h1 {
+      font-size: 25px;
+    }
+    h2 {
+      font-family: $text-font;
+      font-size: 15px;
+    }
+  }
+
+}

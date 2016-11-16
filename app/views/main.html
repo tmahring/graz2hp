@@ -1,0 +1,107 @@
+<!--<div hideme class="thought-cloud">
+  <h1>Wie werde ich Pfadfinder ?</h1>
+  <a href="#" ng-click="showPfadfinderWerden()" class="link"></a>
+</div>-->
+
+<flex-slider fullheight>
+  <flex-slider-slide img="{{highlight.bild}}" ng-repeat="highlight in highlights">
+    <div class="slide-overlay">
+      <h1>{{highlight.title}}</h1>
+      <div ng-if="highlight.type === 'termin'" class="highlight-date">
+        <i class="fa fa-calendar"></i>
+        <span class="date1">{{highlight.date1}}</span>
+        <span class="date2">{{highlight.date2}}</span>
+      </div>
+      <p ng-bind-html="highlight.text"></p>
+      <div class="text-right" ng-if="highlight.type === 'news'">
+        <a  class="readmore" href="#/news/{{highlight.url}}">Weiterlesen...</a>
+      </div>
+      <ul class="stufen-indicator">
+        <li ng-repeat="stufe in highlight.stufe"><a class="btn btn-{{stufe}}" href="/#/news?stufe={{stufe}}">{{stufe}}</a></li>
+      </ul>
+    </div>
+  </flex-slider-slide>
+  <div class="fa fa-chevron-right button-next" ng-click="nextSlide()"></div>
+  <div class="fa fa-chevron-left button-prev" ng-click="prevSlide()"></div>
+  <ol class="slide-indicators">
+    <li ng-class="{active: currentSlide === slide}" ng-repeat="slide in slides" ng-click="showSlide(slide)"></li>
+  </ol>
+  <div class="slide-progress-indicator"><div class="inner"></div></div>
+</flex-slider>
+
+<section id="stufen">
+  <h1 class="section-title">Altersstufen</h1>
+  <hr class="seperator">
+
+  <grid-loader>
+    <div class="container stufen-tiles">
+      <grid-loader-tile class="stufen-tile stufe-{{stufe.stufe}}" ng-repeat="stufe in stufen">
+        <a class="noshow" ng-click="activateContent()">
+          <div class="inner bgcolor-stufe">
+            <img ng-src="{{stufe.vorschaubild}}" />
+            <ng-bind-html ng-bind-html="stufe.heading"></ng-bind-html>
+            <h2>{{stufe.alter}}&nbsp;</h2>
+            <h3 class="text-center">{{stufe.heimstunde}}&nbsp;</h3>
+          </div>
+        </a>
+        <grid-loader-full>
+          <div class="stufen-beschreibung stufe-{{stufe.stufe}} bgcolor-stufe-light">
+            <div class="container">
+              <h1>{{stufe.title}}</h1>
+              <hr class="seperator">
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <div class="bgcover" aspect="0.75" style="background-image:url({{stufe.anzeigebild}})"></div>
+                </div>
+                <div class="col-md-6 col-xs-12" style="overflow:hidden">
+                  <div class="inner bgwhite" aspect="0.75" minsize="1200">
+                    <h3 ng-if="stufe.stufe != 'gruppe'">Alter: <span class="text-right">{{stufe.alter}}</span></h3>
+                    <h3 ng-if="stufe.stufe != 'gruppe'">Heimstunde: <span class="text-right">{{stufe.heimstunde}}</span></h3>
+                    <div ng-bind-html="stufe.body"></div>
+                    <a class="btn btn-{{stufe.stufe}}" href="#/news?stufe={{stufe.stufe}}">Neuigkeiten</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row text-center">
+                <h2>{{stufe.leiterHeading}}</h2>
+                <hr class="seperator small">
+                <div class="leiter-steckbrief col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="leiter in stufe.leiter">
+                  <div class="inner bgcolor-stufe-dark">
+                    <img class="img-responsive" ng-src="{{leiter.bild}}">
+                    <div class="text-box">
+                      <h1>{{leiter.name}}</h1>
+                      <h2>Pfadi seit:<span class="text-right">{{leiter.pfadiSeit}}</span></h2>
+                      <h2>Beruf:<span class="text-right">{{leiter.slogan}}</span></h2>
+                      <h2>Mädchen für alles</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </grid-loader-full>
+      </grid-loader-tile>
+    </div>
+  </grid-loader>
+</section>
+
+<section id="contact" class="fullheight">
+  <div class="contact-detail" fullheight="-92">
+    <div class="contact-detail-text text-center">
+      <h1 class="section-title">Kontakt</h1>
+      <hr class="seperator-ws" />
+      <h2><i class="fa fa-envelope"></i> Email</h2>
+      <p><a href="mailto:gruppe@graz2.at">gruppe@graz2.at</a></p>
+      <h2><i class="fa fa-map-marker"></i> Unser Heim</h2>
+      <p>Unser Heim befindet sich in sehr schöner Lage fast direkt am Hilmteich.<br/>
+         Hilmteichstr. 79 | A-8010 Graz</p>
+      <p><b>GVB-Haltestellen direkt am Hilmteich (Halteststellen Fahrplan):</b></p>
+      <p>
+        Strassenbahn 1 | Stadtbus N1<br/>
+        Regionalbus 200, 201, 211, 220, 221, 250, 260, 270, G20, G200
+      </p>
+    </div>
+  </div>
+  <iframe class="contact-map" fullheight="-92" src="https://www.google.com/maps/d/embed?mid=1QeC_Gan_nNSxuEqAtZFpoid15pA" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <div class="clearfix"></div>
+</section>
