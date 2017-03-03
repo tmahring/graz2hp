@@ -47,9 +47,13 @@
 
         <div ng-if="entry.galleryThumbs.length > 0">
           <div class="image-bar-wrapper bgcolor-stufe-dark">
-            <image-bar>
-              <image-bar-image ng-repeat="img in entry.galleryThumbs" img-src="{{img}}"></image-bar-image>
-            </image-bar>
+            <lightbox-gallery>
+              <image-bar>
+                <image-bar-image ng-repeat="img in entry.gallery" img-src="{{img.thumb}}">
+                  <lightbox-image img-thumb="{{img.thumb}}" img-full="{{img.full}}"></lightbox-image>
+                </image-bar-image>
+              </image-bar>
+            <lightbox-gallery>
           </div>
         </div>
 
@@ -57,3 +61,8 @@
     </grid-full>
   </grid-view>
 </div>
+
+
+
+  <!--  -->
+  <!--  -->

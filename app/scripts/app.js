@@ -18,6 +18,7 @@ angular
     'ngTouch',
     'flexhelpers',
     'ipsum',
+    'FBAngular',
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -42,7 +43,8 @@ angular
       });
   })
   .constant('config', {
-    cmsUrl: '/cms'
+    //cmsUrl: '/cms'
+    cmsUrl: 'http://graz2.tmweb.at/cms'
   })
   .run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
     var original = $location.path;

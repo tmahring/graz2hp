@@ -51,7 +51,15 @@ angular.module('graz2App')
         angular.forEach(result.data, function(entry) {
           entry.dateDisplay = moment(entry.created).fromNow();
           if(entry.galleryThumbs !== '') {
-            entry.galleryThumbs = entry.galleryThumbs.split(',');
+            entry.galleryThumbs = entry.galleryThumbs.split(', ');
+            entry.galleryFull = entry.galleryFull.split(', ');
+            entry.gallery = [];
+            for(var i in entry.galleryThumbs) {
+              entry.gallery.push({
+                thumb: entry.galleryThumbs[i],
+                full: entry.galleryFull[i]
+              });
+            }
           }
           else {
             entry.galleryThumbs = undefined;

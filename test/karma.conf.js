@@ -32,6 +32,7 @@ module.exports = function(config) {
       'bower_components/angular-ipsum/dist/ipsum.min.js',
       'bower_components/moment/moment.js',
       'bower_components/waypoints/lib/noframework.waypoints.js',
+      'bower_components/angular-fullscreen/src/angular-fullscreen.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
