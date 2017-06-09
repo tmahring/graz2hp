@@ -1,7 +1,6 @@
-
 <div>
   <div ng-transclude></div>
-  <div style="background-color:black;position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:10000" ng-if="showMe" fullscreen="showMe">
+  <div class="lightbox-container" style="background-color:black;position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:10000" ng-if="showMe">
     <div class="lightbox-close" ng-click="close()">
       <span class="fa fa-times"></span>
     </div>
@@ -11,10 +10,10 @@
     <div class="lightbox-prev" ng-if="hasPrev" ng-click="prev();">
       <span class="fa fa-chevron-left"></span>
     </div>
-    <div class="lightbox-image" style="background-image:url({{imgFull}});"></div>
+    <div class="lightbox-image" ng-swipe-right="prev();" ng-swipe-left="next();" style="background-image:url({{imgFull}});"></div>
     <image-bar class="lightbox-bar">
       <image-bar-image ng-repeat="img in images" img-src="{{img.thumb}}">
-        <img ng-click="setImage(img);" ng-src="{{img.thumb}}" />
+        <lightbox-image img-thumb="{{img.thumb}}" img-full="{{img.full}}" inside="true"></lightbox-image>
       </image-bar-image>
     </image-bar>
   </div>

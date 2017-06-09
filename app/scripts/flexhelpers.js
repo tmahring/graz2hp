@@ -154,15 +154,24 @@ angular.module('flexhelpers', [])
   };
 })
 
-.controller('menuCtrl', function($scope, $location) {
+.controller('menuCtrl', function($scope, $location, $rootScope) {
   $scope.isCollapsed = true;
   $scope.toggleMenu = function() {
     $scope.isCollapsed = !$scope.isCollapsed;
+    $rootScope.$broadcast('MENU_TOGGLE', $scope.isCollapsed);
   };
   $scope.setPath = function(path) {
     $scope.isCollapsed = true;
+    $rootScope.$broadcast('MENU_TOGGLE', $scope.isCollapsed);
     $location.path(path);
     $(window).scrollTop(0);
+  };
+  $scope.isActive = function(path) {
+    var loc = $location.path();
+    //return loc.indexOf(path) !== -1;
+    //return loc === path;
+    var re = new RegExp(path);
+    return loc.match(re);
   };
 })
 
@@ -228,7 +237,7 @@ angular.module('flexhelpers', [])
   return {
     scope: {
       data: '=',
-      selected: '@',
+      selectedItem: '@',
       filter: '=',
     },
     controller: function($scope) {
@@ -336,7 +345,7 @@ angular.module('flexhelpers', [])
 
           $scope.updateContent();
           for(var i = 0; i < $scope.data.length; i++) {
-            if(urlString($scope.data[i].title) === $scope.selected) {
+            if(urlString($scope.data[i].title) === $scope.selectedItem) {
               $scope.activate($scope.data[i]);
             }
           }
@@ -506,17 +515,34 @@ angular.module('flexhelpers', [])
 
 .directive('lightboxImage', function() {
   return {
-    template: '<img ng-click="showMe();" src="{{imgThumb}}" />',
+    template: '<img src="{{imgThumb}}" />',
     replace: true,
     require: '^lightboxGallery',
     scope: true,
     link: function($scope, $element, $attr, $ctrl) {
-      $scope.imgThumb = $attr.imgThumb;
-      $ctrl.addImage($attr.imgThumb, $attr.imgFull);
 
-      $scope.showMe = function() {
-        $ctrl.showImage($attr.imgFull);
+      var downPos = {x: 0, y: 0};
+      var onMouseDown = function(e) {
+        downPos.x = e.clientX;
+        downPos.y = e.clientY;
       };
+
+      var onMouseUp = function(e) {
+        console.log('MOVE:', Math.abs(downPos.x - e.clientX), Math.abs(downPos.y - e.clientY));
+        if(Math.abs(downPos.x - e.clientX) < 10 && Math.abs(downPos.y - e.clientY) < 10) {
+          $scope.$apply(function() {
+            $ctrl.showImage($attr.imgFull);
+          });
+        }
+      };
+
+      $element.on( 'mousedown', onMouseDown );
+      $element.on( 'mouseup', onMouseUp );
+
+      $scope.imgThumb = $attr.imgThumb;
+      if(!$attr.inside) {
+        $ctrl.addImage($attr.imgThumb, $attr.imgFull);
+      }
     }
   };
 })

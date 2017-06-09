@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="bower_components/slider-revolution/src/css/settings.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="graz2App">
+  <body ng-app="graz2App" ng-controller="BodyCtrl">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -37,12 +37,29 @@
 
           <div class="collapse navbar-collapse" ng-class="{'in': !isCollapsed}">
             <ul class="nav navbar-nav">
-              <li class="active"><a ng-click="setPath('/')">Über Uns</a></li>
-              <li><a ng-click="setPath('/news')">Neuigkeiten</a></li>
-              <li><a ng-click="setPath('/term')">Termine</a></li>
+              <li ng-class="{active: isActive('/$')}"><a ng-click="setPath('/')">Über Uns</a></li>
+              <li ng-class="{active: isActive('/news')}"><a ng-click="setPath('/news')">Neuigkeiten</a></li>
+              <li ng-class="{active: isActive('/term')}"><a ng-click="setPath('/term')">Termine</a></li>
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="impressum" ng-show="showImpressum"  ng-if="showImpressum" >
+      <div class="inner">
+        <i ng-click="showImpressum = false" class="fa fa-times"></i>
+        <h2>Impressum</h2>
+        <h3>Inhaber</h3>
+        <p>Pfadfindergruppe Graz 2 "St. Elisabeth"<br/>
+           Hilmteichstr. 79<br/>
+           A-8010 Graz<br/>
+           ZVR 435358674</p>
+        <h3>Technische Umsetzung</h3>
+        <p><a target="_new" href="http://flexgate.at"><img style="width: 200px; max-width: 80%; height: auto" src="images/logo_flexgate.png"></a><br/>
+        St. Johann 112<br/>
+        3352 St. Johann<br/>
+        <a href="mailto:office@flexgate.at">office@flexgate.at</a></p>
       </div>
     </div>
 
@@ -62,9 +79,8 @@
           <img class="footer-image pull-left" src="/images/lv_logo.png" />
         </a>
         <div class="copyright"><p>2016 &copy; Pfadfindergruppe Graz 2 "St. Elisabeth" | Hilmteichstr. 79 | A-8010 Graz | ZVR 435358674 | Alle Rechte vorbehalten.<br/>
-        <a href="#/intern/impressum">Impressum</a></p></div>
+        <a ng-click="showImpressum = true">Impressum</a></p></div>
         <div class="clearfix"></div>
-      </div>
     </section>
 
 
@@ -99,6 +115,7 @@
         <script src="scripts/services/democontent.js"></script>
         <script src="scripts/controllers/term.js"></script>
         <script src="scripts/controllers/news.js"></script>
+        <script src="scripts/controllers/body.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,11 +1,13 @@
-<!--<div hideme class="thought-cloud">
+<!-- <div hideme class="thought-cloud">
   <h1>Wie werde ich Pfadfinder ?</h1>
   <a href="#" ng-click="showPfadfinderWerden()" class="link"></a>
-</div>-->
+</div> -->
 
 <flex-slider fullheight>
   <flex-slider-slide img="{{highlight.bild}}" ng-repeat="highlight in highlights">
-    <div class="slide-overlay">
+    <div class="overlay-image" ng-if="highlight.overlay" style="background-image:url({{highlight.overlay}})">
+    </div>
+    <div class="slide-overlay"  ng-slide-left="nextSlide()" ng-slide-right="prevSlide()">
       <h1>{{highlight.title}}</h1>
       <div ng-if="highlight.type === 'termin'" class="highlight-date">
         <i class="fa fa-calendar"></i>
@@ -17,7 +19,7 @@
         <a  class="readmore" href="#/news/{{highlight.url}}">Weiterlesen...</a>
       </div>
       <ul class="stufen-indicator">
-        <li ng-repeat="stufe in highlight.stufe"><a class="btn btn-{{stufe}}" href="/#/news?stufe={{stufe}}">{{stufe}}</a></li>
+        <li ng-repeat="stufe in highlight.stufe"><a class="btn btn-{{stufe.url}} active" href="/#/news?stufe={{stufe.url}}">{{stufe.txt}}</a></li>
       </ul>
     </div>
   </flex-slider-slide>
@@ -58,7 +60,7 @@
                     <h3 ng-if="stufe.stufe != 'gruppe'">Alter: <span class="text-right">{{stufe.alter}}</span></h3>
                     <h3 ng-if="stufe.stufe != 'gruppe'">Heimstunde: <span class="text-right">{{stufe.heimstunde}}</span></h3>
                     <div ng-bind-html="stufe.body"></div>
-                    <a class="btn btn-{{stufe.stufe}}" href="#/news?stufe={{stufe.stufe}}">Neuigkeiten</a>
+                    <a class="btn btn-{{stufe.stufe}} active" href="#/news?stufe={{stufe.stufe}}">Neuigkeiten</a>
                   </div>
                 </div>
               </div>
@@ -69,10 +71,9 @@
                   <div class="inner bgcolor-stufe-dark">
                     <img class="img-responsive" ng-src="{{leiter.bild}}">
                     <div class="text-box">
-                      <h1>{{leiter.name}}</h1>
-                      <h2>Pfadi seit:<span class="text-right">{{leiter.pfadiSeit}}</span></h2>
-                      <h2>Beruf:<span class="text-right">{{leiter.slogan}}</span></h2>
-                      <h2>Mädchen für alles</h2>
+                      <div class="leiter-name"><h1>{{leiter.name}}</h1></div>
+                      <!-- <h2>Pfadi seit:<span class="text-right">{{leiter.pfadiSeit}}</span></h2>
+                      <h2 style="text-align:center">{{leiter.slogan}}</h2> -->
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 @import "compass/css3";
 
-@import 'https://fonts.googleapis.com/css?family=Cabin+Sketch|Love+Ya+Like+A+Sister|Oswald|Open+Sans';
+@import "https://fonts.googleapis.com/css?family=Cabin+Sketch|Open+Sans";
 //$headline-font: 'Love Ya Like A Sister', cursive;
 $headline-font: 'Cabin Sketch', cursive;
 $text-font: 'Open Sans', sans-serif;
@@ -213,43 +213,70 @@ a.noshow {
   margin-bottom: 20px;
 }
 
+@mixin stufen-button($color, $color-light, $color-dark) {
+  @include button-variant($btn-default-color, lightgrey, black);
+  border: 5px solid grey;
+  font-size: 150%;
+  &.active, &.active:focus {
+    border: 5px solid $color;
+    background-color: $color-light;
+    //@include button-variant($btn-default-color, $color, black);
+  }
+
+  &:focus, &:hover, &.active:hover {
+    border: 5px solid $color-dark;
+    background-color: $color-light;
+    //@include button-variant($btn-default-color, $color, black);
+  }
+}
+
 .btn-biber {
-  @include button-variant($btn-default-color, $color-biber, black);
+  @include stufen-button($color-biber, $color-biber-light, $color-biber-dark);
 }
 .btn-wiwo {
-  @include button-variant($btn-default-color, $color-wiwo,  black);
+  @include stufen-button($color-wiwo, $color-wiwo-light, $color-wiwo-dark);
 }
 .btn-gusp {
-  @include button-variant($btn-default-color, $color-gusp, black);
+  @include stufen-button($color-gusp, $color-gusp-light, $color-gusp-dark);
 }
 .btn-caex {
-  @include button-variant($btn-default-color, $color-caex, black);
+  @include stufen-button($color-caex, $color-caex-light, $color-caex-dark);
 }
 .btn-raro {
-  @include button-variant($btn-default-color, $color-raro,  black);
+  @include stufen-button($color-raro, $color-raro-light, $color-raro-dark);
 }
 .btn-gruppe {
-  @include button-variant($btn-default-color, $color-gruppe, black);
+  @include stufen-button($color-gruppe, $color-gruppe-light, $color-gruppe-dark);
 }
-/*.btn-biber.active {
-  @include button-variant($btn-default-color, $color-biber, black);
+.btn-alle {
+  @include stufen-button(lightgrey, white, grey);
 }
-.btn-wiwo.active {
-  @include button-variant($btn-default-color, $color-wiwo,  black);
-}
-.btn-gusp.active {
-  @include button-variant($btn-default-color, $color-gusp, black);
-}
-.btn-caex.active {
-  @include button-variant($btn-default-color, $color-caex, black);
-}
-.btn-raro.active {
-  @include button-variant($btn-default-color, $color-raro,  black);
-}
-.btn-gruppe.active {
-  @include button-variant($btn-default-color, $color-gruppe, black);
-}*/
 
+.impressum {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 10000;
+  background-color: rgba(0,0,0,0.7);
+  .inner {
+    position: relative;
+    .fa {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+    }
+    margin-top: 50px;
+    background-color: white;
+    @include border-radius(20px);
+    padding: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 @import "nav";
 @import "news";

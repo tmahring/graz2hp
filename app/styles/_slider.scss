@@ -36,6 +36,21 @@
   }
 }
 
+.overlay-image {
+  position: absolute;
+  top: 20%;
+  left: 0px;
+  bottom: 20%;
+  right: 0px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.stufen-indicator > li > a {
+  z-index:1000;
+}
+
 .button-next, .button-prev {
   position: absolute;
   top: 50%;
@@ -63,12 +78,12 @@
 .slide-indicators {
   position: absolute;
   bottom: 10px;
-  left: 0px;
-  right: 0px;
-  z-index: 500;
+  left: 25%;
+  right: 25%;
   text-align: center;
   margin: 0px;
   padding: 0px;
+  z-index: 500;
   li {
     display: inline-block;
     margin: 0px 10px;

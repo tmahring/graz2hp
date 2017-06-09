@@ -3,19 +3,16 @@
 <hr class="seperator"/>
 
 <div class="filter-buttons">
-  <div class="btn-group">
-    <button type="button" class="btn btn-default" ng-click="setFilter(undefined)">Alle</button>
-    <button type="button" class="btn btn-biber" ng-class="{'active': stufenFilter == 'biber' || !stufenFilter}" ng-click="setFilter('biber')">Biber</button>
-    <button type="button" class="btn btn-wiwo" ng-class="{'active': stufenFilter == 'wiwo' || !stufenFilter}" ng-click="setFilter('wiwo')">WiWö</button>
-    <button type="button" class="btn btn-gusp" ng-class="{'active': stufenFilter == 'gusp' || !stufenFilter}" ng-click="setFilter('gusp')">GuSp</button>
-    <button type="button" class="btn btn-caex" ng-class="{'active': stufenFilter == 'caex' || !stufenFilter}" ng-click="setFilter('caex')">CaEx</button>
-    <button type="button" class="btn btn-raro" ng-class="{'active': stufenFilter == 'raro' || !stufenFilter}" ng-click="setFilter('raro')">RaRo</button>
-    <button type="button" class="btn btn-gruppe" ng-class="{'active': stufenFilter == 'gruppe' || !stufenFilter}" ng-click="setFilter('gruppe')">Gruppe</button>
-  </div>
+  <button type="button" class="btn btn-alle active" ng-click="setFilter(undefined)">Alle</button>
+  <button type="button" class="btn btn-biber" ng-class="{'active': stufenFilter == 'biber' || !stufenFilter}" ng-click="setFilter('biber')">Biber</button>
+  <button type="button" class="btn btn-wiwo" ng-class="{'active': stufenFilter == 'wiwo' || !stufenFilter}" ng-click="setFilter('wiwo')">WiWö</button>
+  <button type="button" class="btn btn-gusp" ng-class="{'active': stufenFilter == 'gusp' || !stufenFilter}" ng-click="setFilter('gusp')">GuSp</button>
+  <button type="button" class="btn btn-caex" ng-class="{'active': stufenFilter == 'caex' || !stufenFilter}" ng-click="setFilter('caex')">CaEx</button>
+  <button type="button" class="btn btn-raro" ng-class="{'active': stufenFilter == 'raro' || !stufenFilter}" ng-click="setFilter('raro')">RaRo</button>
+  <button type="button" class="btn btn-gruppe" ng-class="{'active': stufenFilter == 'gruppe' || !stufenFilter}" ng-click="setFilter('gruppe')">Gruppe</button>
 </div>
-
 <div class="text-center" ng-if="content">
-  <grid-view data="content" selected="{{newsitem}}" filter="newsFilter" class="news">
+  <grid-view data="content" selected-item="{{newsitem}}" filter="newsFilter" class="news">
     <grid-thumb ng-click="activate(entry)" class="news-preview" aspect=".8">
       <div class="news-img" style="background-image:url({{entry.thumb}})">
         <div class="title">

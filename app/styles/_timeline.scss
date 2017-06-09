@@ -77,7 +77,12 @@ Modules - reusable parts of our design
   background: white;
   border-radius: 0.25em;
   padding: 1em;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
+
 .cd-timeline-content:after {
   content: "";
   display: table;

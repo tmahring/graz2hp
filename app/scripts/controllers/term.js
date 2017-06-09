@@ -37,6 +37,8 @@ angular.module('graz2App')
             }
           }
 
+          entry.body = entry.body.replace('src="/cms/sites', 'src="http://graz2.tmweb.at/cms/sites');
+
           $scope.events.push(entry);
         });
       }

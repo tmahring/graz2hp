@@ -63,6 +63,14 @@ angular
  .directive('hideme', function($window, $document) {
    return function(scope, elem) {
      var hidden = false;
+     scope.$on('MENU_TOGGLE', function(collapsed) {
+       if(collapsed) {
+         elem.hide(0);
+       }
+       else {
+         elem.show(0);
+       }
+     });
      $document.on('scroll', function() {
        if(!hidden && $window.scrollY > $(window).height() * 0.3) {
          elem.hide(400);
