@@ -10,14 +10,14 @@
 angular.module('graz2App')
   .controller('MainCtrl', function ($scope, $http, config, $q, urlString) {
     var leiterQ = $q(function(resolve) {
-      $http.get(config.cmsUrl + '/leiter').then(
+      $http.get(config.cmsUrl + '/leiter?_format=json').then(
         function success(result) {
           resolve(result.data);
         }
       );
     });
 
-    $http.get(config.cmsUrl + '/stufen').then(
+    $http.get(config.cmsUrl + '/stufen?_format=json').then(
       function success(result) {
         $scope.stufen = [];
 
@@ -92,7 +92,7 @@ angular.module('graz2App')
       }
     }
 
-    $http.get(config.cmsUrl + '/highlights').then(
+    $http.get(config.cmsUrl + '/highlights?_format=json').then(
       function success(result) {
         $scope.highlights = [];
         angular.forEach(result.data, function(entry) {

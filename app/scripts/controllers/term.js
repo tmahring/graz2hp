@@ -9,7 +9,7 @@
  */
 angular.module('graz2App')
   .controller('TermCtrl', function ($scope, config, $http) {
-    $http.get(config.cmsUrl + '/termine').then(
+    $http.get(config.cmsUrl + '/termine?_format=json').then(
       function success(result) {
         $scope.events = [];
         angular.forEach(result.data, function(entry) {

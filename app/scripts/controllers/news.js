@@ -45,7 +45,7 @@ angular.module('graz2App')
       }
     });
 
-    $http.get(config.cmsUrl + '/news').then(
+    $http.get(config.cmsUrl + '/news?_format=json').then(
       function success(result) {
         $scope.content = [];
         angular.forEach(result.data, function(entry) {
